@@ -1,0 +1,57 @@
+dataset:
+  name: 'NMNIST'
+  event_representation: 'histogram'  # ['histogram', 'event_queue']
+  nmnist:
+    dataset_path: "/home/ysekikawa/data/N_MNIST/"
+    object_classes: 'all'
+    height: 34
+    width: 34
+    nr_events_window: 2000
+    proc_rate: 100
+
+dir:
+  log: '../log/'
+model:
+  # ['sparse_cls', 'dss_exp']
+  model_name: 'dss_exp'
+optim:
+  # for EXP 1e-4 for bs:128 5e-5 for bs:64
+  init_lr: 0.001
+  batch_size: 64 #32 48
+  n_epoch: 1000
+  # n_epoch: 2
+  lr_scheduler_config: -1 # "~": no scheduler "-1": cosine scheduler
+  factor_lr: 0.5
+checkpoint:
+  resume_training: False
+  resume_file: 
+  use_pretrained: False
+  pretrained_dense_vgg: ''
+  pretrained_sparse_vgg: ''
+hardware:
+  num_cpu_workers: -1 # {-1: auto, 0: main thread, >0: ...}
+  gpu_device: 0  # [0 or 'cpu']
+  pin_memory: True
+
+dss:
+  # 'conv_nan', 'lc_nan', 'lrlc_nan', 'conv_conv', 'lrlc_lrlc', 'lc_lc', 'red'
+  kernel_mode: 'conv_conv'
+  # W/ DSS
+  expantion_ratio: 1
+  DSS_weight: 1e-1
+  DSS_weight_step: 2e-0
+  dss_criteria: 0.02
+
+  q_threshold: 1e-1
+  spatial_rank: 5 # Spatial-rank for LRLC
+  bias_pd: False
+  channel_wise_th: True
+  activation: 'relu' # relu, hswish, swish
+  MAC_loss: 1 # -1:TDAM(post-quantization), 0:TDAM, 1:TDSS 
+  quantizer: 'MG_muldiv_log' # 'MG_divmul_lin', 'MG_muldiv_lin', 'MG_divmul_log', 'MG_muldiv_log', 'LSQ_divmul_lin', 'LSQ_muldiv_lin', 'LSQ_divmul_log', 'LSQ_muldiv_log', 
+  n_warpup_epochs: 0
+  n_linear_epochs: 1000
+  base_n_connections: 17246564
+  max_scale: 1024
+  min_scale: 64
+  note: '4' #

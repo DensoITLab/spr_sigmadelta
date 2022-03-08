@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Supplementaly material &lpar;code&rpar; for BMVC submittion ID&colon;126</title>
+        <style>
+/* From extension marp-team.marp-vscode */
+#marp-vscode {
+  all: initial;
+}
+
+/* Override VS Code default CSS rules reverting to initial
+   https://github.com/microsoft/vscode/blob/master/src/vs/workbench/contrib/webview/browser/pre/main.js#L53 */
+body.marp-vscode {
+  padding: 0;
+}
+
+body.marp-vscode img {
+  max-width: unset;
+  max-height: unset;
+}
+
+body.marp-vscode a,
+body.marp-vscode a:hover,
+body.marp-vscode code {
+  color: unset;
+}
+
+body.marp-vscode blockquote {
+  background: unset;
+  border-color: unset;
+}
+
+@media screen {
+  body.marp-vscode {
+    overflow-y: scroll;
+  }
+
+  #marp-vscode svg[data-marpit-svg] {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+    display: block;
+    margin: 20px;
+  }
+
+  #marp-vscode[data-polyfill] svg[data-marpit-svg] > foreignobject > section {
+    /* Workaround for wrong hit area caused by Chromium's rendering bug */
+    overflow: visible;
+  }
+
+  /* Based on https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+  #code-csp-warning {
+    background-color: #444;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
+    color: white;
+    cursor: pointer;
+    font-family: sans-serif;
+    font-size: 12px;
+    line-height: 22px;
+    margin: 16px;
+    padding: 6px;
+    position: fixed;
+    right: 0;
+    text-align: center;
+    top: 0;
+    word-wrap: break-word;
+  }
+
+  #code-csp-warning:hover {
+    text-decoration: none;
+    background-color: #007acc;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+  }
+}
+
+@media print {
+  body.marp-vscode #code-csp-warning {
+    display: none;
+  }
+
+  #marp-vscode[data-polyfill] svg[data-marpit-svg] > foreignobject > section {
+    /* Disable WebKit polyfill */
+    transform: none !important;
+  }
+}
+
+</style>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+
+</style>
+        <script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+        <script type="text/javascript">
+/* From extension marp-team.marp-vscode */
+!function(){"use strict";var e={};Object.defineProperty(e,"__esModule",{value:!0});const t="marpitSVGPolyfill:setZoomFactor,",r=Symbol();let o,n;function i(e){const i="object"==typeof e&&e.target||document,l="object"==typeof e?e.zoom:e;window[r]||(Object.defineProperty(window,r,{configurable:!0,value:!0}),window.addEventListener("message",(({data:e,origin:r})=>{if(r===window.origin)try{if(e&&"string"==typeof e&&e.startsWith(t)){const[,t]=e.split(","),r=Number.parseFloat(t);Number.isNaN(r)||(n=r)}}catch(e){console.error(e)}})));let a=!1;Array.from(i.querySelectorAll("svg[data-marpit-svg]"),(e=>{var t,r,i,s;e.style.transform||(e.style.transform="translateZ(0)");const c=l||n||e.currentScale||1;o!==c&&(o=c,a=c);const d=e.getBoundingClientRect(),{length:u}=e.children;for(let o=0;o<u;o+=1){const n=e.children[o],l=n.getScreenCTM();if(l){const e=null!==(r=null===(t=n.x)||void 0===t?void 0:t.baseVal.value)&&void 0!==r?r:0,o=null!==(s=null===(i=n.y)||void 0===i?void 0:i.baseVal.value)&&void 0!==s?s:0,a=n.firstElementChild,{style:u}=a;u.transformOrigin||(u.transformOrigin=`${-e}px ${-o}px`),u.transform=`scale(${c}) matrix(${l.a}, ${l.b}, ${l.c}, ${l.d}, ${l.e-d.left}, ${l.f-d.top}) translateZ(0.0001px)`}}})),!1!==a&&Array.from(i.querySelectorAll("iframe"),(({contentWindow:e})=>{null==e||e.postMessage(`${t}${a}`,"null"===window.origin?"*":window.origin)}))}o=1,n=void 0;const l=(e,t,r)=>{if(e.getAttribute(t)!==r)return e.setAttribute(t,r),!0};function a({once:e=!1,target:t=document}={}){const r="Apple Computer, Inc."===navigator.vendor?[i]:[];let o=!e;const n=()=>{for(const e of r)e({target:t});!function(e=document){Array.from(e.querySelectorAll('svg[data-marp-fitting="svg"]'),(e=>{var t;const r=e.firstChild,o=r.firstChild,{scrollWidth:n,scrollHeight:i}=o;let a,s=1;if(e.hasAttribute("data-marp-fitting-code")&&(a=null===(t=e.parentElement)||void 0===t?void 0:t.parentElement),e.hasAttribute("data-marp-fitting-math")&&(a=e.parentElement),a){const e=getComputedStyle(a),t=Math.ceil(a.clientWidth-parseFloat(e.paddingLeft||"0")-parseFloat(e.paddingRight||"0"));t&&(s=t)}const c=Math.max(n,s),d=Math.max(i,1),u=`0 0 ${c} ${d}`;l(r,"width",`${c}`),l(r,"height",`${d}`),l(e,"preserveAspectRatio",getComputedStyle(e).getPropertyValue("--preserve-aspect-ratio")||"xMinYMin meet"),l(e,"viewBox",u)&&e.classList.toggle("__reflow__")}))}(t),o&&window.requestAnimationFrame(n)};return n(),()=>{o=!1}}const s=Symbol(),c=(e=document)=>{if("undefined"==typeof window)throw new Error("Marp Core's browser script is valid only in browser context.");if(e[s])return e[s];const t=a({target:e}),r=()=>{t(),delete e[s]};return Object.defineProperty(e,s,{configurable:!0,value:r}),r};e.browser=c,e.default=c,e.observer=a;var d=e;!function(){if(document.getElementById("marp-vscode")){document.body.classList.add("marp-vscode");const e=document.querySelectorAll("style:not(#marp-vscode-style):not(#_defaultStyles)"),t=document.querySelectorAll('link[rel="stylesheet"]:not([href*="marp-vscode"])');e.forEach((e=>e.remove())),t.forEach((e=>e.remove())),d.observer()}}()}();
+</script>
+
+    </head>
+    <body class="vscode-body vscode-light">
+        <h1 id="supplementaly-material-code-for-bmvc-submittion-id126">Supplementaly material (code) for BMVC submittion ID:126</h1>
+<p><strong>Learning to Sparsify Differences of Synaptic Signal for Efficient Event Processing</strong></p>
+<p>We will open-source the attached code upon acceptance (After cleanup).</p>
+<h2 id="note">Note</h2>
+<p>Our main contribution of the paper, mconv layer, TDSS loss, and <em>macro-grad</em> are implemented <code>models/dss_layer.py</code> and <code>models/dss_utils.py</code>. <code>DSSConv2d</code> layer is desinged to replace existing <code>Conv2d</code> layer with minimum modification.
+Example network using the layer and the loss is implemented in <code>models/dss_net</code>, <code>models/dss_mnist.py</code>, <code>models/dss_pilotnet.py</code>, <code>models/dss_VGG.py</code>, and <code>models/dss_object_det.py</code>.</p>
+<p>Dataloader and trainer are based on the code of <a href="https://github.com/uzh-rpg/rpg_asynet">Event-based Asynchronous Sparse Convolutional Networks, ECCV 2020</a>
+(<em>Asyc-SSC</em>, <a href="http://rpg.ifi.uzh.ch/docs/ECCV20_Messikommer.pdf">PDF</a>).
+Refer to their original <a href="https://github.com/uzh-rpg/rpg_asynet">code and documentation</a> to evaluate &quot;Asyc-SSC&quot; and 'Dense' model.</p>
+<h2 id="usage">Usage</h2>
+<h3 id="main-and-ablation-experiments">Main and ablation experiments</h3>
+<p>The following commands will run the main and ablation experiments shown in Tab.2.
+The script will automatically train  and evaluate  for three times.
+It will generate a folder depending on the settings under <code>log/</code>, and saves statistics and results during training.</p>
+<pre><code><code><div>bash run_exp.sh PI XXX // PilotNet, x=0,1,2,3,4,5,6,7
+bash run_exp.sh NM XXX // N-MNIST,  x=0,1,2,3,4,5,6,7
+bash run_exp.sh NC XXX // N-Caltech101, x=0,1,2,3
+bash run_exp.sh PS XXX // Prophesee Gen1 Automotive, x=0,1,2,3
+</div></code></code></pre>
+<p>'XXX' corresponds to the row of Tab.2 in the main paper (below the line highlighted in cyan).</p>
+<h3 id="accessing-the-result">Accessing the result</h3>
+<p>Most statistics during training are saved in <code>visualization/log.bin</code>.
+Use the following script to load the log (and plot figure like Fig.A.).</p>
+<pre><code><code><div>load_log.py
+</div></code></code></pre>
+<h3 id="training-and-evaluating-in-a-different-settings">Training and evaluating in a different settings</h3>
+<p>Use <code>train.py</code> with corresponding setting files as follows.</p>
+<pre><code><code><div>train.py --settings_file &quot;config/settings_xxx.yaml`
+</div></code></code></pre>
+<p><code>XXX</code> corresponds to a dataset name. It will output the same log file as described above.</p>
+<h3 id="settings">Settings</h3>
+<p>One can adjust most of the basic training parameters/settings in the <code>config/settings_XXX.yaml</code> file without modifying the code.
+<code>XXX</code> corresponds to a dataset to be evaluated.
+Some of the essential parameters are described below.</p>
+<ul>
+<li>
+<p>Loss for reducing MAC is configured in  <code>dss/MAC_loss</code> tag. <code>1</code> is our proposed TDSS loss of Eq.(12), <code>0</code> is TDAM loss of Eq.(6), and <code>-1</code> is also TDAM loss but it is evaluated layer-wise and the TDAM loss is not backpropagated through the network.</p>
+</li>
+<li>
+<p>Kernel type is configured in  <code>dss/kernel_mode</code> tag. <code>conv_nan</code> represent to convolution, and <code>conv_conv</code>  represent masked convolution. Other kernels are not used in the main paper, but <code>lrlc_lrlc</code> and <code>lc_lc</code> are discussed in supplement.　Available options are as follows:</p>
+<ul>
+<li><code>conv_nan</code></li>
+<li><code>lrlc_nan</code></li>
+<li><code>lc_nan</code></li>
+<li><code>conv_conv</code></li>
+<li><code>lrlc_lrlc</code></li>
+<li><code>lc_lc</code></li>
+</ul>
+</li>
+<li>
+<p>Qunatizatation method is configured in 'dss/quantizer' tag.
+'MG_xxx_yyy' represents represents proposed <em>macro-grad</em> and <code>LSQ_XXX_YYY</code> represents LSQ.
+'xxx' represents the order of division and multiplication of Eq.(2), <code>divmul</code> represents division followed by multiplication (same as Eq.(2)), and <code>muldiv</code> does this in reverse order.
+'yyy' represents the parameterization of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">s</span></span></span></span>, <code>log</code> parameterize <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">s</span></span></span></span> in log-space, which is convenient to restrict the range of of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">s</span></span></span></span> in positive region. Available options are as follows:</p>
+<ul>
+<li><code>MG_divmul_lin</code></li>
+<li><code>MG_muldiv_lin</code></li>
+<li><code>MG_divmul_log</code></li>
+<li><code>MG_divmul_log</code></li>
+<li><code>LSQ_divmul_lin</code></li>
+<li><code>LSQ_muldiv_lin</code></li>
+<li><code>LSQ_divmul_log</code></li>
+<li><code>LSQ_muldiv_log</code></li>
+</ul>
+</li>
+<li>
+<p>The quantization step size can be per channel or shared within a layer. It is configured in  <code>dss/channel_wise_th</code> tag.</p>
+</li>
+<li>
+<p>DSS scheduling parameters are configured in  <code>dss/DSS_weight_step</code> (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>η</mi><mrow><mi>s</mi><mi>t</mi><mi>e</mi><mi>p</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\eta_{step}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.716668em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">η</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.28055599999999997em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">s</span><span class="mord mathdefault mtight">t</span><span class="mord mathdefault mtight">e</span><span class="mord mathdefault mtight">p</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span>) and <code>mlc_dss/dss_criteria</code> (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>η</mi><mrow><mi>t</mi><mi>h</mi><mi>r</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\eta_{thr}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">η</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mord mathdefault mtight">h</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>)  tag.</p>
+</li>
+<li>
+<p>Network size is onfigured in  <code>dss/expantion_ratio</code> tag. <code>1</code> represents default size.</p>
+</li>
+<li>
+<p>The dataset could be configured in the <code>dataset/name</code> and  <code>dataset/name/dataset_path</code> tag.</p>
+</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<p>Install the dependencies with pip as:</p>
+<pre><code><code><div>pip install -r requirements.txt
+</div></code></code></pre>
+<p>Install CPP Bindings for the event representation tool with pip as:</p>
+<pre><code><code><div>cd install event_representation_tool
+pip install event_representation_tool
+</div></code></code></pre>
+<h2 id="datasets">Datasets</h2>
+<p>The following datasets are supported:</p>
+<ul>
+<li>Regression (steering angle prediction) on <a href="https://github.com/lhzlhz/PilotNet">Nvidia Pilotnet</a> (video)</li>
+<li>Classification on <a href="https://www.google.com/url?q=https%3A%2F%2Fwww.dropbox.com%2Fsh%2Ftg2ljlbmtzygrag%2FAABrCc6FewNZSNsoObWJqY74a%3Fdl%3D0&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNErunHbfiO0S6DM_6iqNwEaPuU4VQ">N-MNIST</a>   (event)</li>
+<li>Classification on <a href="http://rpg.ifi.uzh.ch/datasets/gehrig_et_al_iccv19/N-Caltech101.zip">N-Caltech101</a>   (event)</li>
+<li>Object Detection on <a href="https://www.prophesee.ai/2020/01/24/prophesee-gen1-automotive-detection-dataset/">Prophesee Gen1 Automotive</a> (event)</li>
+</ul>
+
+    </body>
+    </html>

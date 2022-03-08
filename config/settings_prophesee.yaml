@@ -1,0 +1,62 @@
+dataset:
+  # 'NCaltech101_ObjectDetection', 'Prophesee'
+  name: 'Prophesee'
+  event_representation: 'histogram'  # ['histogram', 'event_queue']
+  prophesee:
+    # dataset_path: "/home/ysekikawa/data2/ATIS_auto/"
+    dataset_path: "/home/ysekikawa/data/ATIS_auto/"
+
+    object_classes: 'all'
+    height: 240
+    width: 304  
+    nr_events_window: 25000
+    proc_rate: 1250
+
+dir:
+  log: '../log/'
+model:
+  # ['sparse_det', 'dense_det','dss_det']
+  model_name: 'dss_det'
+optim:
+  batch_size: 64
+  init_lr: 0.001
+  n_epoch: 1000
+  # Set to "steps: ~" if no scheduler is needed
+  # lr_scheduler_config: [500, 1000, 1500]
+  lr_scheduler_config: -1
+  factor_lr: 0.01
+checkpoint:
+  resume_training: False
+  # resume_file: log/data_Prophesee_model_dss_object_det_kernel_lcn_lm_eta_1_nps_1/checkpoints/model_step_59.pth'
+  resume_file: 
+  # the same dataset
+  use_pretrained: False
+  pretrained_dense_vgg: ''
+  pretrained_sparse_vgg: ''
+hardware:
+  num_cpu_workers: 64 # {-1: auto, 0: main thread, >0: ...}
+  gpu_device: 0  # [0 or 'cpu']
+  pin_memory: True
+
+dss:
+  # ['conv_nan', 'lc_nan', 'lrlc_nan', 'conv_conv', 'lrlc_lrlc', 'lc_lc', 'red']
+  kernel_mode: 'conv_conv'
+  DSS_weight: 1e-2
+  DSS_weight_step: 1e-0
+  expantion_ratio: 1
+  dss_criteria: 0.872
+
+  q_threshold: 1e-1
+  spatial_rank: 5
+  bias_pd: False
+  channel_wise_th: False
+  activation: 'relu' # relu, hswish, swish
+  use_sine: False
+  MAC_loss: 1 # -1:TDAM(post-quantization), 0:TDAM, 1:TDSS 
+  quantizer: 'MG_muldiv_log' # 'MG_divmul_lin', 'MG_muldiv_lin', 'MG_divmul_log', 'MG_muldiv_log', 'LSQ_divmul_lin', 'LSQ_muldiv_lin', 'LSQ_divmul_log', 'LSQ_muldiv_log', 
+  n_warpup_epochs: 0
+  n_linear_epochs: 0
+  base_n_connections: 1088174112.0
+  max_scale: 1024
+  min_scale: 64
+  note: ''

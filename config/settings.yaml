@@ -1,0 +1,57 @@
+dataset:
+  # NMNIST', 'PilotNet'
+  name: 'NMNIST'
+  event_representation: 'histogram'  # ['histogram', 'event_queue']
+
+  nmnist:
+    # dataset_path: "/home/user/data/N_MNIST/"
+    dataset_path: "/home/ysekikawa/data/N_MNIST/"
+    object_classes: 'all'
+    # height: 35
+    # width: 35
+    height: 34
+    width: 34
+    nr_events_window: 2000
+  pilotnet:
+    dataset_path: "/home/user/data/nvidia_drive/"
+    object_classes: 'all'
+    height: 66
+    width: 200
+    nr_events_window: -1
+
+dir:
+  log: 'log/'
+model:
+  # ['sparse_cls', 'dense_cls', 'dss_exp']
+  model_name: 'dss_exp'
+optim:
+  # for EXP 1e-4 for bs:128
+  n_epoch: 256
+  init_lr: 1e-4
+  batch_size: 2
+  lr_scheduler_config: ~
+  factor_lr: 0.1
+checkpoint:
+  resume_training: False
+  resume_file: 
+  use_pretrained: False
+  pretrained_dense_vgg: ''
+  pretrained_sparse_vgg: ''
+hardware:
+  num_cpu_workers: 0
+  gpu_device: 0 
+
+mlc_dss:
+  # ['conv_nan', 'lc_nan', 'conv_conv', 'conv_lc', 'lc_lc', 'lrlc_nan', 'lrlc_conv', 'lrlc_lrlc']
+  kernel_mode: 'lc_lc'
+
+  # W/ DSS
+  expantion_ratio: 1
+  DSS_weight: 4e0
+  DSS_weight_step: 2e0
+  
+  # W/O DSS
+  # expantion_ratio: 1
+  # DSS_weight: 0
+  # DSS_weight_step: 0
+  dss_criteria: 0.015
