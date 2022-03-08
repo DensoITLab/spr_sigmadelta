@@ -1,7 +1,6 @@
-# Supplementaly material (code) for BMVC submittion ID:126
-**Learning to Sparsify Differences of Synaptic Signal for Efficient Event Processing**
+# E2E training of Sparse Sigma-delta Network
+**Learning to Sparsify Differences of Synaptic Signal for Efficient Event Processing**(BMVC2021, Oral)
 
-We will open-source the attached code upon acceptance (After cleanup).
 
 ## Note
 Our main contribution of the paper, mconv layer, TDSS loss, and *macro-grad* are implemented `models/dss_layer.py` and `models/dss_utils.py`. `DSSConv2d` layer is desinged to replace existing `Conv2d` layer with minimum modification.
@@ -45,13 +44,13 @@ One can adjust most of the basic training parameters/settings in the `config/set
 `XXX` corresponds to a dataset to be evaluated.
 Some of the essential parameters are described below.
 - Loss for reducing MAC is configured in  `dss/MAC_loss` tag. `1` is our proposed TDSS loss of Eq.(12), `0` is TDAM loss of Eq.(6), and `-1` is also TDAM loss but it is evaluated layer-wise and the TDAM loss is not backpropagated through the network. 
-- Kernel type is configured in  `dss/kernel_mode` tag. `conv_nan` represent to convolution, and `conv_conv`  represent masked convolution. Other kernels are not used in the main paper, but `lrlc_lrlc` and `lc_lc` are discussed in supplement.　Available options are as follows:
+- Kernel type is configured in  `dss/kernel_mode` tag. `conv_nan` represent to convolution, and `conv_conv`  represent masked convolution. Other kernels are not used in the main paper, but discussed in the supplement.). Available options are as follows:
     - `conv_nan`
-    - `lrlc_nan`
-    - `lc_nan`
     - `conv_conv` 
-    - `lrlc_lrlc`
-    - `lc_lc`
+    - `lrlc_lrlc` (see supplement)
+    - `lc_lc` (see supplement)
+    - `lrlc_nan` (see supplement)
+    - `lc_nan` (see supplement)
 
 - Qunatizatation method is configured in 'dss/quantizer' tag. 
 'MG_xxx_yyy' represents represents proposed *macro-grad* and `LSQ_XXX_YYY` represents LSQ. 
@@ -83,10 +82,60 @@ cd install event_representation_tool
 pip install event_representation_tool
 ```
 
-
 ## Datasets
 The following datasets are supported:
 * Regression (steering angle prediction) on [Nvidia Pilotnet](https://github.com/lhzlhz/PilotNet) (video) 
 * Classification on [N-MNIST](https://www.google.com/url?q=https%3A%2F%2Fwww.dropbox.com%2Fsh%2Ftg2ljlbmtzygrag%2FAABrCc6FewNZSNsoObWJqY74a%3Fdl%3D0&sa=D&sntz=1&usg=AFQjCNErunHbfiO0S6DM_6iqNwEaPuU4VQ)   (event)  
 * Classification on [N-Caltech101](http://rpg.ifi.uzh.ch/datasets/gehrig_et_al_iccv19/N-Caltech101.zip)   (event)
 * Object Detection on [Prophesee Gen1 Automotive](https://www.prophesee.ai/2020/01/24/prophesee-gen1-automotive-detection-dataset/) (event)
+
+## Citation
+If you use the code in your research,  please use the following BibTeX entry.
+```BibTeX
+@inproceedings{sekikawa2021spr_sd,
+  author    = {Yusuke Sekikawa and Keisuke Uto},
+  title     = {Learning to Sparsify Differences of Synaptic Signal for Efficient Event Processing},
+  booktitle = {Proceedings of the British Machine Vision Conference 2021, {BMVC}
+               2021, Online,  November 22-25, 2021},
+  publisher = {{BMVA} Press},
+  year      = {2021},
+  url       = {https://www.bmvc2021.com/},
+}
+```
+
+## Author
+Yusuke Sekikawa, Denso IT Laboratory, Inc.
+
+## LICENSE
+
+Copyright (C) 2020 Denso IT Laboratory, Inc.
+All Rights Reserved
+
+Denso IT Laboratory, Inc. retains sole and exclusive ownership of all
+intellectual property rights including copyrights and patents related to this
+Software.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of the Software and accompanying documentation to use, copy, modify, merge,
+publish, or distribute the Software or software derived from it for
+non-commercial purposes, such as academic study, education and personal use,
+subject to the following conditions:
+
+1. Redistributions of source code must retain the above copyright notice,
+this list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice,
+this list of conditions and the following disclaimer in the documentation
+and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE.
